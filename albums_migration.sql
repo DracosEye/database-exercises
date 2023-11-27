@@ -7,6 +7,6 @@ CREATE TABLE `albums` (
                           `artist` tinytext NOT NULL,
                           `name` tinytext NOT NULL,
                           `release_date` year NOT NULL,
-                          `sales` float(3,1) unsigned NOT NULL,
+                          `sales` decimal(3,1) unsigned NOT NULL,
   `genre` tinytext NOT NULL
 );
