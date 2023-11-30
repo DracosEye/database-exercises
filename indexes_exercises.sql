@@ -19,3 +19,5 @@ insert into albums (artist, name, release_date, sales, genre) values ('AC/DC', '
 select * from albums;
 
 insert into albums (artist, name, release_date, sales, genre) values ('Other Band', 'Back in Black', 1990, 40, 'crap');
+
+show indexes from albums;
