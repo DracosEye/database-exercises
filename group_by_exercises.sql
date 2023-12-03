@@ -13,3 +13,7 @@ group by last_name;
 select count(gender) as num_employees, gender from employees
 where first_name in ('Irena', 'Maya', 'Vidya')
 group by gender;
+
+select gender, count(gender) from employees
+group by gender;
+

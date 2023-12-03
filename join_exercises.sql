@@ -49,3 +49,37 @@ right join roles on users.role_id = roles.id;
 select count(roles.name) as number_of_users, roles.name from users
 join roles on users.role_id = roles.id
 group by roles.name;
+
+use employees;
+
+select departments.dept_name as Department_Name, concat(employees.first_name, ' ', employees.last_name) as Department_Manager
+from employees
+join dept_manager
+on dept_manager.to_date like '9%' and dept_manager.emp_no = employees.emp_no
+join departments
+on departments.dept_no = dept_manager.dept_no;
+
+select departments.dept_name as Department_Name, concat(employees.first_name, ' ', employees.last_name) as Department_Manager
+from employees
+join dept_manager
+on dept_manager.to_date like '9%' and dept_manager.emp_no = employees.emp_no and employees.gender = 'F'
+join departments
+on departments.dept_no = dept_manager.dept_no;
+
+select titles.title, count(titles.title) as Total
+from titles
+join dept_emp
+on titles.emp_no = dept_emp.emp_no and titles.to_date like '9%' and dept_emp.dept_no = 'd009'
+group by titles.title
+order by Total desc;
+
+select departments.dept_name as Department_Name, concat(employees.first_name, ' ', employees.last_name) as Department_Manager, salaries.salary as Salary
+from employees
+join titles
+    on titles.title = 'Manager' and titles.to_date like '9%' and titles.emp_no = employees.emp_no
+join dept_emp
+    on dept_emp.emp_no = employees.emp_no
+join departments
+    on dept_emp.dept_no = departments.dept_no
+join salaries
+    on salaries.emp_no = dept_emp.emp_no and salaries.to_date like '9%';
